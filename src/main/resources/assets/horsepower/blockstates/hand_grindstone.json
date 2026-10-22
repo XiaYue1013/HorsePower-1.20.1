@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "horsepower:block/hand_grindstone"
+    },
+    "facing=east": {
+      "model": "horsepower:block/hand_grindstone"
+    },
+    "facing=south": {
+      "model": "horsepower:block/hand_grindstone"
+    },
+    "facing=west": {
+      "model": "horsepower:block/hand_grindstone"
+    }
+  }
+}

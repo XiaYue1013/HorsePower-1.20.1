@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LSL",
+    "###",
+    "###"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:lead"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "#": {
+      "tag": "forge:stone"
+    }
+  },
+  "result": {
+    "item": "horsepower:grindstone"
+  }
+}

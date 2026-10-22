@@ -1,0 +1,14 @@
+build/
+.gradle/
+run/
+run-data/
+out/
+*.iml
+.idea/
+API_MIGRATION.md
+FEATURE_CHECKLIST.md
+KNOWN_ISSUES.md
+TEST_RESULTS.md
+tools
+
+/docs

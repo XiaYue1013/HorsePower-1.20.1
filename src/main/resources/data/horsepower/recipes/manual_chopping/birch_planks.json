@@ -1,0 +1,11 @@
+{
+  "type": "horsepower:manual_chopping",
+  "ingredient": {
+    "tag": "minecraft:birch_logs"
+  },
+  "result": {
+    "item": "minecraft:birch_planks",
+    "count": 4
+  },
+  "time": 4
+}

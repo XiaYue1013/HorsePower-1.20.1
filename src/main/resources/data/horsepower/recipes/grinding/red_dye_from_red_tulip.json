@@ -1,0 +1,11 @@
+{
+  "type": "horsepower:grinding",
+  "ingredient": {
+    "item": "minecraft:red_tulip"
+  },
+  "result": {
+    "item": "minecraft:red_dye",
+    "count": 1
+  },
+  "time": 12
+}

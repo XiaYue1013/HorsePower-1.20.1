@@ -1,0 +1,166 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
+}
+
+group = mod_group_id
+version = "${minecraft_version}-${mod_version}"
+
+base {
+    archivesName = 'HorsePower'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+minecraft {
+    mappings channel: 'official', version: minecraft_version
+
+    copyIdeResources = true
+
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+
+            // Needed by dependencies with mixins (CraftTweaker) in the dev environment
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {
+            property 'forge.enabledGameTestNamespaces', mod_id
+            // -PvisualTest=true: builds a test scene, takes screenshots into run/screenshots and quits (dev only)
+            property 'horsepower.visualTest', project.findProperty('visualTest') ?: 'false'
+            if (project.findProperty('visualTest') == 'true')
+                args '--width', '1280', '--height', '720'
+        }
+
+        server {
+            property 'forge.enabledGameTestNamespaces', mod_id
+            // -PserverSmokeTest=true: the server stops itself after 200 ticks (dev only)
+            property 'horsepower.serverSmokeTest', project.findProperty('serverSmokeTest') ?: 'false'
+            args '--nogui'
+        }
+
+        gameTestServer {
+            property 'forge.enabledGameTestNamespaces', mod_id
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        // JEI and CraftTweaker
+        name = "BlameJared Maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        // The One Probe
+        name = "K-4u Maven"
+        url = "https://maven.k-4u.nl/"
+        content {
+            includeGroup 'mcjty.theoneprobe'
+        }
+    }
+    maven {
+        // Jade
+        name = 'CurseMaven'
+        url = 'https://cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // All integrations are optional: compile against them, never require them at runtime.
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    compileOnly fg.deobf("curse.maven:jade-324717:${jade_file}")
+    compileOnly fg.deobf("mcjty.theoneprobe:theoneprobe:${top_version}") {
+        transitive = false
+    }
+    compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${minecraft_version}:${crafttweaker_version}")
+
+    // Set -PwithIntegrations=true to launch the dev client with the optional mods present.
+    if (project.findProperty('withIntegrations') == 'true') {
+        runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+        runtimeOnly fg.deobf("curse.maven:jade-324717:${jade_file}")
+        runtimeOnly fg.deobf("mcjty.theoneprobe:theoneprobe:${top_version}") {
+            transitive = false
+        }
+        runtimeOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${minecraft_version}:${crafttweaker_version}")
+    }
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            forge_version          : forge_version,
+            forge_version_range    : forge_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    // The visual test harness is a development tool only
+    exclude 'se/gory_moon/horsepower/dev/**'
+    // LGPL v3 (the license of Horse Power) and the GPL v3 it builds on
+    from('LICENSE') {
+        rename { "LICENSE_${mod_id}" }
+    }
+    from('COPYING_GPL3.txt') {
+        rename { "COPYING_GPL3_${mod_id}.txt" }
+    }
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : 'Gory_Moon',
+                'Specification-Version'   : '1',
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : 'Gory_Moon',
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+    finalizedBy 'reobfJar'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

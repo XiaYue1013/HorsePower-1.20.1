@@ -1,0 +1,11 @@
+{
+  "type": "horsepower:grinding",
+  "ingredient": {
+    "item": "minecraft:allium"
+  },
+  "result": {
+    "item": "minecraft:magenta_dye",
+    "count": 1
+  },
+  "time": 12
+}

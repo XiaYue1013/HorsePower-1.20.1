@@ -1,0 +1,11 @@
+{
+  "type": "horsepower:chopping",
+  "ingredient": {
+    "tag": "minecraft:dark_oak_logs"
+  },
+  "result": {
+    "item": "minecraft:dark_oak_planks",
+    "count": 4
+  },
+  "time": 1
+}

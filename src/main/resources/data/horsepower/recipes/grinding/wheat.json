@@ -1,0 +1,17 @@
+{
+  "conditions": [
+    {
+      "type": "horsepower:config",
+      "option": "flour"
+    }
+  ],
+  "type": "horsepower:grinding",
+  "ingredient": {
+    "item": "minecraft:wheat"
+  },
+  "result": {
+    "item": "horsepower:flour",
+    "count": 1
+  },
+  "time": 12
+}

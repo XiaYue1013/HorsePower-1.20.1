@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "forge:composite",
+  "children": {
+    "base": {
+      "parent": "horsepower:block/hand_grindstone"
+    },
+    "center": {
+      "parent": "horsepower:block/hand_grindstone_center"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "horsepower:block/press_filler"
+    },
+    "facing=east": {
+      "model": "horsepower:block/press_filler"
+    },
+    "facing=south": {
+      "model": "horsepower:block/press_filler"
+    },
+    "facing=west": {
+      "model": "horsepower:block/press_filler"
+    },
+    "facing=up": {
+      "model": "horsepower:block/press_filler"
+    },
+    "facing=down": {
+      "model": "horsepower:block/press_filler"
+    }
+  }
+}

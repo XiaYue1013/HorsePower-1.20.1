@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LSL",
+    "#P#",
+    "###"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:lead"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "P": {
+      "tag": "minecraft:wooden_pressure_plates"
+    }
+  },
+  "result": {
+    "item": "horsepower:press"
+  }
+}

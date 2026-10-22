@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "horsepower:block/chopper_filler"
+    },
+    "facing=east": {
+      "model": "horsepower:block/chopper_filler"
+    },
+    "facing=south": {
+      "model": "horsepower:block/chopper_filler"
+    },
+    "facing=west": {
+      "model": "horsepower:block/chopper_filler"
+    },
+    "facing=up": {
+      "model": "horsepower:block/chopper_filler"
+    },
+    "facing=down": {
+      "model": "horsepower:block/chopper_filler"
+    }
+  }
+}

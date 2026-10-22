@@ -1,0 +1,11 @@
+{
+  "type": "horsepower:manual_chopping",
+  "ingredient": {
+    "tag": "minecraft:jungle_logs"
+  },
+  "result": {
+    "item": "minecraft:jungle_planks",
+    "count": 4
+  },
+  "time": 4
+}

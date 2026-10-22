@@ -1,0 +1,44 @@
+{
+  "conditions": [
+    {
+      "type": "horsepower:config",
+      "option": "flour"
+    },
+    {
+      "type": "horsepower:config",
+      "option": "dough"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "horsepower:dough"
+    ]
+  },
+  "criteria": {
+    "has_flour": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "horsepower:flour"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "horsepower:dough"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_flour",
+      "has_the_recipe"
+    ]
+  ]
+}

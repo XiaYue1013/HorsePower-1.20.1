@@ -1,0 +1,11 @@
+{
+  "type": "horsepower:pressing",
+  "ingredient": {
+    "tag": "minecraft:leaves"
+  },
+  "count": 8,
+  "fluid": {
+    "fluid": "minecraft:water",
+    "amount": 1000
+  }
+}

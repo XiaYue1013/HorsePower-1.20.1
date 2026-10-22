@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "type": "horsepower:config",
+      "option": "dough"
+    }
+  ],
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "horsepower:dough"
+  },
+  "result": "minecraft:bread",
+  "experience": 0.0,
+  "cookingtime": 200
+}

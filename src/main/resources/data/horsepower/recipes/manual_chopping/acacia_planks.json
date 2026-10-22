@@ -1,0 +1,11 @@
+{
+  "type": "horsepower:manual_chopping",
+  "ingredient": {
+    "tag": "minecraft:acacia_logs"
+  },
+  "result": {
+    "item": "minecraft:acacia_planks",
+    "count": 4
+  },
+  "time": 4
+}

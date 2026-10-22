@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "horsepower:chopping_block",
+    "horsepower:chopper",
+    "horsepower:chopper_filler",
+    "horsepower:press",
+    "horsepower:press_filler"
+  ]
+}

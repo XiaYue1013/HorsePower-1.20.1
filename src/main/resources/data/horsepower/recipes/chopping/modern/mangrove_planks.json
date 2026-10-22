@@ -1,0 +1,11 @@
+{
+  "type": "horsepower:chopping",
+  "ingredient": {
+    "tag": "minecraft:mangrove_logs"
+  },
+  "result": {
+    "item": "minecraft:mangrove_planks",
+    "count": 4
+  },
+  "time": 1
+}

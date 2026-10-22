@@ -1,0 +1,24 @@
+{
+  "conditions": [
+    {
+      "type": "horsepower:config",
+      "option": "hand_chopping_block"
+    }
+  ],
+  "type": "horsepower:shapeless_chopping",
+  "ingredients": [
+    {
+      "tag": "minecraft:logs"
+    },
+    {
+      "item": "minecraft:flint"
+    }
+  ],
+  "texture": {
+    "tag": "minecraft:logs"
+  },
+  "result": {
+    "item": "horsepower:chopping_block",
+    "count": 2
+  }
+}

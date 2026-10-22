@@ -1,0 +1,28 @@
+{
+  "type": "horsepower:shaped_chopping",
+  "pattern": [
+    "LSL",
+    "SFS",
+    "SWS"
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "L": {
+      "item": "minecraft:lead"
+    },
+    "F": {
+      "item": "minecraft:flint"
+    },
+    "W": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "texture": {
+    "tag": "minecraft:logs"
+  },
+  "result": {
+    "item": "horsepower:chopper"
+  }
+}
